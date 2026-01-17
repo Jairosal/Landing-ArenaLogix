@@ -1,16 +1,31 @@
 ---
-
+import "../styles/global.css";
+import MainLayout from "../layouts/MainLayout.astro";
+import Hero from "../components/sections/Hero.astro";
+import AboutFloatingCard from "../components/sections/AboutFloatingCard.astro";
+import Services from "../components/sections/Services.astro";
+import Methodology from "../components/sections/Methodology.astro";
+import ValueProposition from "../components/sections/ValueProposition.astro";
+import Contact from "../components/sections/Contact.astro";
+import OurClients from "../components/sections/OurClients.astro";
+import OurCommunity from "../components/sections/OurCommunity.astro";
+import Footer from "../components/sections/Footer.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<MainLayout>
+  <div class="relative">
+    <Hero />
+    <div
+      class="relative md:absolute md:top-full md:left-0 md:w-full md:-translate-y-1/2 z-20"
+    >
+      <AboutFloatingCard />
+    </div>
+  </div>
+  <Services />
+  <ValueProposition />
+  <Methodology />
+  <Contact />
+  <OurClients />
+  <OurCommunity />
+  <Footer />
+</MainLayout>

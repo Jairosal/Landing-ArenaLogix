@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+
+@font-face {
+  font-family: "Rivera";
+  src: url("/fonts/rivera/Rivera_PERSONAL_USE_ONLY-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Rivera";
+  src: url("/fonts/rivera/Rivera_PERSONAL_USE_ONLY-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+/* Geometr212 - Normal */
+@font-face {
+  font-family: "Geometr212";
+  src: url("/fonts/geometr/GEO212N.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Geometr212 - Heavy/Bold */
+@font-face {
+  font-family: "Geometr212";
+  src: url("/fonts/geometr/GEO212H.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Geometr212 Book - Más ligero */
+@font-face {
+  font-family: "Geometr212-Book";
+  src: url("/fonts/geometr/Geo212Bk.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Geometr212 Book Heavy */
+@font-face {
+  font-family: "Geometr212-BookHeavy";
+  src: url("/fonts/geometr/Geo212Hv.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ========== Clases utilitarias para Geometric ========== */
+
+/* Geometr212 estándar */
+.font-geometr {
+  font-family: "Geometr212", Inter, sans-serif;
+}
+
+/* Geometr212 Book (más ligero/delgado) */
+.font-geometr-book {
+  font-family: "Geometr212-Book", Inter, sans-serif;
+}
+
+/* Geometr212 Book Heavy */
+.font-geometr-heavy {
+  font-family: "Geometr212-BookHeavy", Inter, sans-serif;
+}

@@ -1,0 +1,266 @@
+---
+const clients = Array(6).fill({
+    name: "Cliente",
+    logo: "/assets/logo-cat-blue.png",
+});
+
+const testimonials = [
+    {
+        clientType: "Cliente Empresa de Retail",
+        rating: 4.9,
+        maxRating: 5.0,
+        review: "ArenaLogix transformó completamente nuestros procesos de inventario y ventas. Su enfoque personalizado nos impresionó desde el inicio - realmente entendieron nuestras necesidades específicas. En 6 meses redujimos errores de inventario en 85% con su solución de automatización. Su metodología ágil y soporte continuo son excepcionales. Definitivamente nuestro socio tecnológico de confianza.",
+        author: "María Elena González",
+        role: "Directora de Operaciones, RetailPlus",
+        image: "/assets/des-soft-personalizado.png",
+    },
+    {
+        clientType: "Cliente Startup Tecnológica",
+        rating: 4.9,
+        maxRating: 5.0,
+        review: "Como startup en crecimiento rápido, necesitábamos una solución escalable sin comprometer calidad. ArenaLogix superó nuestras expectativas desarrollando una aplicación web y móvil que anticipó las necesidades futuras del mercado. Durante una crisis inesperada, nuestra plataforma se mantuvo estable y nos permitió adaptarnos rápidamente. Son verdaderos colaboradores comprometidos con nuestro éxito.",
+        author: "Carlos Mendoza",
+        role: "CEO, InnovateTech Solutions",
+        image: "/assets/des-soft-personalizado.png",
+    },
+];
+---
+
+<section
+    class="relative py-4 lg:py-8 overflow-hidden"
+    aria-labelledby="clients-title"
+>
+    <div class="absolute inset-0 z-0" aria-hidden="true">
+        <img
+            src="/assets/fondo-azul.png"
+            alt=""
+            class="w-full h-full object-cover"
+            loading="lazy"
+        />
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-6">
+        <h2
+            id="clients-title"
+            class="text-white text-3xl md:text-2xl font-geometr text-center mb-2 lg:mb-4 tracking-[-0.1em]"
+        >
+            NUESTROS CLIENTES:
+        </h2>
+
+        <div
+            class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center justify-items-center"
+        >
+            {
+                clients.map((client, index) => (
+                    <div class="w-32 h-32 flex items-center justify-center p-4 transition-transform hover:scale-105">
+                        <img
+                            src={client.logo}
+                            alt={`Logo de ${client.name} ${index + 1}`}
+                            class="w-full h-full object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
+                            loading="lazy"
+                        />
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<section id="community" class="py-16 bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 space-y-16">
+
+        <div class="flex items-center justify-between gap-4 lg:gap-8">
+            <!-- Spacer (matches left arrow) -->
+            <div class="w-12 h-12 flex-shrink-0 invisible"></div>
+
+            <div class="flex-1 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-12 items-center">
+                <!-- Left: Porque elegirnos -->
+                <div class="flex justify-center md:justify-start">
+                     <img
+                        src="/assets/porque-elegirnos.png"
+                        alt="¿Por qué elegirnos a nosotros?"
+                        class="max-w-full h-auto object-contain"
+                        style="max-height: 150px;"
+                    />
+                </div>
+
+                <div class="flex justify-center md:justify-end">
+                     <img
+                        src="/assets/calificacion.png"
+                        alt="Nuestra calificación Excelente"
+                        class="max-w-full h-auto object-contain"
+                        style="max-height: 120px;"
+                    />
+                </div>
+            </div>
+
+            <!-- Spacer (matches right arrow) -->
+             <div class="w-12 h-12 flex-shrink-0 invisible"></div>
+        </div>
+
+        <!-- Bottom Row: Testimonials Carousel -->
+        <div class="flex items-center gap-2 md:gap-4">
+            <!-- Left Arrow -->
+            <button
+                id="prev-testimonial"
+                class="p-2 rounded-full hover:bg-gray-100 transition-colors flex-shrink-0"
+                aria-label="Previous testimonial"
+            >
+                <img src="/assets/arrow-black.png" 
+                alt="Arrow Left"
+                class="w-8 h-8 md:w-10 md:h-10 -scale-x-100"
+                />
+            </button>
+
+            <!-- Cards Container with overflow scroll -->
+            <div class="flex-1 overflow-hidden">
+                <div id="testimonials-carousel" class="flex gap-4 md:gap-6 transition-transform duration-500 ease-in-out">
+                    {testimonials.map((testimonial) => (
+                        <div class="flex-shrink-0 w-full md:w-[calc(50%-12px)] flex flex-col md:flex-row bg-white rounded-2xl overflow-hidden shadow-lg">
+                            <!-- Image Side -->
+                            <div class="w-full h-24 md:h-auto md:w-40 flex-shrink-0 relative">
+                                <img 
+                                    src={testimonial.image} 
+                                    alt="Desarrollo de Software" 
+                                    class="w-full h-full object-contain md:object-contain"
+                                />
+                            </div>
+                            
+                            <!-- Content Side -->
+                            <div class="flex-1 p-3 md:p-4 flex flex-col font-geometr">
+                                <!-- Header: Title + Stars + Rating -->
+                                <div class="flex flex-wrap items-center gap-1 md:gap-2 mb-2">
+                                    <h3 class="font-bold text-xs md:text-sm text-gray-900 tracking-tight">{testimonial.clientType}</h3>
+                                    <div class="flex text-yellow-400">
+                                        {Array(5).fill(null).map(() => (
+                                            <svg class="w-3 h-3 md:w-3.5 md:h-3.5 fill-current" viewBox="0 0 20 20">
+                                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                            </svg>
+                                        ))}
+                                    </div>
+                                    <span class="text-[9px] md:text-[11px] text-gray-500 font-medium">{testimonial.rating} / {testimonial.maxRating}</span>
+                                </div>
+                                
+                                <!-- Quote Box -->
+                                <div class="flex-1 bg-sky-50 border border-blue-200 rounded-2xl p-3 md:p-4">
+                                    <!-- Author with quote icon -->
+                                    <div class="flex items-center gap-0.5 mb-2">
+                                        <span class="text-4xl md:text-8xl text-brand-primary font-heading leading-none rotate-180 flex-shrink-0">""</span>
+                                        <span class="font-body font-extrabold text-gray-900 text-[7px] md:text-[10px] tracking-tighter whitespace-nowrap overflow-hidden text-ellipsis">
+                                            {testimonial.author} - {testimonial.role}
+                                        </span>
+                                    </div>
+                                    
+                                    <!-- Review text -->
+                                    <p class="text-[6px] md:text-[8px] font-body text-gray-900 leading-base text-justify">
+                                        {testimonial.review}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            <!-- Right Arrow -->
+            <button
+                id="next-testimonial"
+                class="p-2 rounded-full hover:bg-gray-100 transition-colors flex-shrink-0"
+                aria-label="Next testimonial"
+            >
+                <img src="/assets/arrow-blue.png" 
+                alt="Arrow Right"
+                class="w-8 h-8 md:w-10 md:h-10"
+                />
+            </button>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Testimonials Carousel
+    const carousel = document.getElementById('testimonials-carousel');
+    const prevBtn = document.getElementById('prev-testimonial');
+    const nextBtn = document.getElementById('next-testimonial');
+    
+    let currentIndex = 0;
+    let autoScrollInterval: ReturnType<typeof setInterval>;
+    const AUTO_SCROLL_DELAY = 5000; // 5 seconds
+    
+    function getVisibleCards() {
+        return window.innerWidth >= 768 ? 2 : 1;
+    }
+    
+    function getCardWidth() {
+        if (!carousel) return 0;
+        const cards = carousel.children;
+        if (cards.length === 0) return 0;
+        const card = cards[0] as HTMLElement;
+        const gap = window.innerWidth >= 768 ? 24 : 16;
+        return card.offsetWidth + gap;
+    }
+    
+    function getTotalCards() {
+        return carousel ? carousel.children.length : 0;
+    }
+    
+    function scrollToCard(index: number) {
+        if (!carousel) return;
+        const maxIndex = Math.max(0, getTotalCards() - getVisibleCards());
+        currentIndex = Math.max(0, Math.min(index, maxIndex));
+        const offset = currentIndex * getCardWidth();
+        carousel.style.transform = `translateX(-${offset}px)`;
+    }
+    
+    function nextCard() {
+        const maxIndex = Math.max(0, getTotalCards() - getVisibleCards());
+        if (currentIndex >= maxIndex) {
+            scrollToCard(0);
+        } else {
+            scrollToCard(currentIndex + 1);
+        }
+    }
+    
+    function prevCard() {
+        if (currentIndex <= 0) {
+            const maxIndex = Math.max(0, getTotalCards() - getVisibleCards());
+            scrollToCard(maxIndex);
+        } else {
+            scrollToCard(currentIndex - 1);
+        }
+    }
+    
+    function startAutoScroll() {
+        stopAutoScroll();
+        autoScrollInterval = setInterval(nextCard, AUTO_SCROLL_DELAY);
+    }
+    
+    function stopAutoScroll() {
+        if (autoScrollInterval) {
+            clearInterval(autoScrollInterval);
+        }
+    }
+    
+    // Event listeners
+    prevBtn?.addEventListener('click', () => {
+        prevCard();
+        startAutoScroll(); // Reset auto-scroll timer
+    });
+    
+    nextBtn?.addEventListener('click', () => {
+        nextCard();
+        startAutoScroll(); // Reset auto-scroll timer
+    });
+    
+    // Pause on hover
+    carousel?.addEventListener('mouseenter', stopAutoScroll);
+    carousel?.addEventListener('mouseleave', startAutoScroll);
+    
+    // Handle resize
+    window.addEventListener('resize', () => {
+        scrollToCard(currentIndex);
+    });
+    
+    // Start auto-scroll on load
+    startAutoScroll();
+</script>
