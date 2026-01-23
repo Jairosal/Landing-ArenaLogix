@@ -1,16 +1,83 @@
 ---
 import Navbar from "../components/layout/Navbar.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+  title = "ArenaLogix | Desarrollo de Software a Medida",
+  description = "Transformamos tus ideas en realidad digital. Desarrollo de software personalizado, aplicaciones web y móviles, consultoría tecnológica y soluciones en la nube.",
+  image = "/assets/og-image.png",
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ArenaLogix</title>
+
+    <!-- SEO Primario -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta
+      name="keywords"
+      content="desarrollo software, software a medida, aplicaciones web, apps móviles, consultoría tecnológica, desarrollo aplicaciones, software empresarial, ArenaLogix"
+    />
+    <meta name="author" content="ArenaLogix" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, Astro.site)} />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:site_name" content="ArenaLogix" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(image, Astro.site)} />
+
+    <!-- Preload fuentes críticas -->
+    <link
+      rel="preload"
+      href="/fonts/rivera/Rivera_PERSONAL_USE_ONLY-Regular.otf"
+      as="font"
+      type="font/otf"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/geometr/GEO212N.ttf"
+      as="font"
+      type="font/truetype"
+      crossorigin
+    />
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#2C63A7" />
+    <meta name="msapplication-TileColor" content="#2C63A7" />
   </head>
   <body class="font-sans bg-black text-white antialiased">
     <Navbar />
-    <slot />
+    <main>
+      <slot />
+    </main>
   </body>
 </html>
