@@ -8,7 +8,9 @@
   }
 }
 
+/* ========== Fuentes Personalizadas ========== */
 
+/* Rivera */
 @font-face {
   font-family: "Rivera";
   src: url("/fonts/rivera/Rivera_PERSONAL_USE_ONLY-Regular.otf") format("opentype");
@@ -24,7 +26,6 @@
   font-style: normal;
   font-display: swap;
 }
-
 
 /* Geometr212 - Normal */
 @font-face {
@@ -62,19 +63,8 @@
   font-display: swap;
 }
 
-/* ========== Clases utilitarias para Geometric ========== */
-
-/* Geometr212 estándar */
-.font-geometr {
-  font-family: "Geometr212", Inter, sans-serif;
-}
-
-/* Geometr212 Book (más ligero/delgado) */
-.font-geometr-book {
-  font-family: "Geometr212-Book", Inter, sans-serif;
-}
-
-/* Geometr212 Book Heavy */
-.font-geometr-heavy {
-  font-family: "Geometr212-BookHeavy", Inter, sans-serif;
-}
+/* 
+ * NOTA: Las clases utilitarias .font-geometr, .font-geometr-book, .font-geometr-heavy
+ * ahora están definidas en tailwind.config.cjs para mayor consistencia.
+ * Usa las clases de Tailwind: font-geometr, font-geometr-book, font-geometr-heavy
+ */

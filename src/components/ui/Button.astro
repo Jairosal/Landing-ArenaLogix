@@ -1,0 +1,76 @@
+---
+/**
+ * Button - Componente reutilizable para botones y enlaces
+ *
+ * @example
+ * <Button href="#cotizar">Cotizar</Button>
+ * <Button variant="secondary" size="sm">Ver más</Button>
+ * <Button type="submit">Enviar</Button>
+ */
+
+interface Props {
+    /** URL de destino (convierte el botón en un enlace) */
+    href?: string;
+    /** Variante visual del botón */
+    variant?: "primary" | "secondary" | "outline" | "ghost";
+    /** Tamaño del botón */
+    size?: "sm" | "md" | "lg";
+    /** Tipo de botón (para formularios) */
+    type?: "button" | "submit" | "reset";
+    /** Si el botón ocupa todo el ancho disponible */
+    fullWidth?: boolean;
+    /** Clases adicionales de Tailwind */
+    class?: string;
+}
+
+const {
+    href,
+    variant = "primary",
+    size = "md",
+    type = "button",
+    fullWidth = false,
+    class: className = "",
+} = Astro.props;
+
+const baseClasses =
+    "inline-flex items-center justify-center font-bold rounded-full uppercase tracking-wide transition-all duration-300 cursor-pointer";
+
+const variants = {
+    primary:
+        "bg-brand-primary hover:bg-brand-primary/80 text-white shadow-lg hover:shadow-xl",
+    secondary: "bg-white/10 hover:bg-white/20 text-white backdrop-blur",
+    outline:
+        "border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white",
+    ghost: "text-brand-primary hover:bg-brand-primary/10",
+};
+
+const sizes = {
+    sm: "py-2 px-4 text-xs",
+    md: "py-2.5 px-6 text-sm",
+    lg: "py-3 px-8 text-base",
+};
+
+const widthClass = fullWidth ? "w-full" : "";
+
+const allClasses = [
+    baseClasses,
+    variants[variant],
+    sizes[size],
+    widthClass,
+    className,
+]
+    .filter(Boolean)
+    .join(" ");
+---
+
+{
+    href ? (
+        <a href={href} class={allClasses}>
+            <slot />
+        </a>
+    ) : (
+        <button type={type} class={allClasses}>
+            <slot />
+        </button>
+    )
+}

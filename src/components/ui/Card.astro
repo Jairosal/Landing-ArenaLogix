@@ -1,0 +1,91 @@
+---
+/**
+ * Card - Componente reutilizable para tarjetas con imagen y texto
+ *
+ * @example
+ * <Card image="/assets/icon.png" title="Título" alternating={true} index={0}>
+ *   Descripción de la tarjeta
+ * </Card>
+ */
+
+interface Props {
+    /** Ruta de la imagen/icono */
+    image?: string;
+    /** Texto alternativo para la imagen */
+    imageAlt?: string;
+    /** Título de la tarjeta (opcional) */
+    title?: string;
+    /** Si las tarjetas deben alternar posición (izq/der) */
+    alternating?: boolean;
+    /** Índice de la tarjeta (para alternancia) */
+    index?: number;
+    /** Variante visual */
+    variant?: "default" | "compact" | "testimonial";
+    /** Clases adicionales */
+    class?: string;
+}
+
+const {
+    image,
+    imageAlt = "Icono",
+    title,
+    alternating = false,
+    index = 0,
+    variant = "default",
+    class: className = "",
+} = Astro.props;
+
+const isEven = index % 2 === 0;
+
+const baseClasses =
+    "flex items-center bg-white rounded-xl shadow-[8px_8px_16px_rgba(0,0,0,0.50)] border border-gray-100 transition-transform hover:scale-[1.02]";
+
+const variants = {
+    default:
+        "p-2 sm:p-3 md:p-4 max-w-[280px] sm:max-w-[260px] md:max-w-[280px] lg:max-w-[320px]",
+    compact: "p-2 sm:p-3 max-w-[240px]",
+    testimonial:
+        "p-3 md:p-4 flex-col md:flex-row rounded-2xl overflow-hidden shadow-lg",
+};
+
+const positionClasses = alternating
+    ? isEven
+        ? "self-start md:translate-x-8 lg:translate-x-12"
+        : "self-end md:-translate-x-8 lg:-translate-x-12"
+    : "";
+
+const allClasses = [baseClasses, variants[variant], positionClasses, className]
+    .filter(Boolean)
+    .join(" ");
+---
+
+<div class={allClasses}>
+    {
+        image && (
+            <div class="flex-shrink-0 w-8 sm:w-10 md:w-12 mr-2 sm:mr-3 rounded-lg flex items-center justify-center overflow-hidden">
+                <img
+                    src={image}
+                    alt={imageAlt}
+                    class="w-full h-full object-contain p-0.5"
+                    loading="lazy"
+                    decoding="async"
+                />
+            </div>
+        )
+    }
+
+    <div class="flex-1 min-w-0 flex flex-col justify-center py-1">
+        {
+            title && (
+                <h3 class="font-body font-extrabold text-black text-sm sm:text-base mb-0.5">
+                    {title}
+                </h3>
+            )
+        }
+        <div
+            class="text-[7px] sm:text-[8px] md:text-[8px] text-gray-900 leading-snug font-semibold text-justify font-geometr"
+        >
+            <slot />
+        </div>
+    </div>
+</div>

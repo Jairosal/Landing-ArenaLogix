@@ -1,0 +1,88 @@
+---
+/**
+ * SectionTitle - Componente reutilizable para títulos de secciones
+ *
+ * @example
+ * <SectionTitle>Nuestros Servicios</SectionTitle>
+ * <SectionTitle subtitle="Lo mejor para ti" align="left" color="primary">
+ *   Título Principal
+ * </SectionTitle>
+ */
+
+interface Props {
+    /** Subtítulo pequeño sobre el título principal */
+    subtitle?: string;
+    /** Alineación del texto */
+    align?: "left" | "center" | "right";
+    /** Color del título */
+    color?: "primary" | "dark" | "white" | "black";
+    /** Tamaño del título */
+    size?: "sm" | "md" | "lg" | "xl";
+    /** Si incluir el badge/botón decorativo debajo */
+    badge?: string;
+    /** Clases adicionales */
+    class?: string;
+}
+
+const {
+    subtitle,
+    align = "center",
+    color = "primary",
+    size = "lg",
+    badge,
+    class: className = "",
+} = Astro.props;
+
+const alignClasses = {
+    left: "text-left",
+    center: "text-center",
+    right: "text-right",
+};
+
+const colorClasses = {
+    primary: "text-brand-primary",
+    dark: "text-brand-dark",
+    white: "text-white",
+    black: "text-gray-900",
+};
+
+const sizeClasses = {
+    sm: "text-2xl md:text-3xl",
+    md: "text-3xl md:text-4xl",
+    lg: "text-4xl md:text-5xl lg:text-6xl",
+    xl: "text-4xl md:text-6xl lg:text-7xl",
+};
+
+const containerClasses = [alignClasses[align], className]
+    .filter(Boolean)
+    .join(" ");
+const titleClasses = [
+    colorClasses[color],
+    sizeClasses[size],
+    "font-heading font-medium leading-tight",
+].join(" ");
+---
+
+<div class={containerClasses}>
+    {
+        subtitle && (
+            <p class="text-gray-500 font-body font-bold text-sm md:text-base tracking-wide mb-2">
+                {subtitle}
+            </p>
+        )
+    }
+
+    <h2 class={titleClasses}>
+        <slot />
+    </h2>
+
+    {
+        badge && (
+            <div class="mt-6 inline-block">
+                <span class="bg-brand-primary text-white px-8 py-2 md:px-12 md:py-3 rounded-full text-sm md:text-lg font-bold font-body tracking-wide shadow-lg">
+                    {badge}
+                </span>
+            </div>
+        )
+    }
+</div>

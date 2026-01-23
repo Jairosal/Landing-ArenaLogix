@@ -1,7 +1,7 @@
 # 🎯 Guía de Presentación Técnica - ArenaLogix
 
 > **Documento para guiar la presentación del proyecto a desarrolladores**  
-> Tiempo estimado: 15-20 minutos
+> Tiempo estimado: 20-25 minutos
 
 ---
 
@@ -10,7 +10,8 @@
 ### Preparación
 - [ ] Tener el proyecto abierto en VS Code
 - [ ] Terminal lista con el proyecto en la ruta correcta
-- [ ] Navegador abierto en `localhost:4321`
+- [ ] Navegador abierto en `localhost:4321` (modo desarrollo)
+- [ ] Pestaña con Lighthouse listo para auditar
 - [ ] Compartir pantalla (código + navegador lado a lado)
 
 ### Comando inicial
@@ -21,290 +22,111 @@ npm run dev
 
 ---
 
-## 🚀 PARTE 1: Visión General (3 min)
+## 🚀 PARTE 1: Visión General y Stack Tecnológico (5 min)
 
 ### Qué decir:
-> "ArenaLogix es una landing page profesional construida con tecnologías modernas de desarrollo web. El objetivo fue crear un sitio **rápido, mantenible y fácil de escalar**."
+> "ArenaLogix es una landing page de alto rendimiento construida sobre el stack moderno de **Astro 5** y **Tailwind CSS**. Nuestro objetivo principal fue maximizar la velocidad de carga (SEO técnico) y la mantenibilidad del código."
 
-### Stack Tecnológico
+### Stack Tecnológico Principal
 
-| Tecnología | Versión | Propósito |
-|------------|---------|-----------|
-| **Astro** | 5.16.x | Framework principal - genera HTML estático |
-| **Tailwind CSS** | 3.4.x | Sistema de diseño utility-first |
-| **PostCSS** | 8.x | Procesamiento de CSS |
-| **TypeScript** | - | Tipado estático (configurado) |
-
-### ¿Por qué Astro?
-> "Elegimos Astro porque implementa la **Islands Architecture**. Esto significa que por defecto **no enviamos JavaScript al cliente**, solo HTML y CSS. El resultado es una página que carga en milisegundos."
-
-**Beneficios clave:**
-- ⚡ Rendimiento excepcional (0 KB JS por defecto)
-- 🔍 SEO optimizado nativamente
-- 🧩 Componentes modulares y reutilizables
-- 🔥 Hot reload instantáneo en desarrollo
+| Tecnología | Versión | Propósito Técnico |
+|------------|---------|-------------------|
+| **Astro** | 5.x | Islands Architecture = 0 KB JS por defecto |
+| **Tailwind CSS** | 3.4.x | Styling atómico y sistema de diseño unificado |
+| **TypeScript** | 5.x | Robustez y tipado en componentes |
+| **PostCSS** | 8.x | Procesamiento y compatibilidad CSS |
 
 ---
 
-## 🏗️ PARTE 2: Arquitectura del Proyecto (5 min)
+## 🏗️ PARTE 2: Arquitectura y Componentes UI (5 min)
 
-### Mostrar en VS Code: Explorador de archivos
+### Mostrar en VS Code: `src/components/ui/`
 
-```
-arenalogix/
-├── 📁 public/                    # Assets estáticos
-│   ├── assets/                   # Imágenes del sitio
-│   └── fonts/                    # Fuentes personalizadas (16 archivos)
-│
-├── 📁 src/                       # Código fuente
-│   ├── 📁 components/
-│   │   ├── layout/
-│   │   │   └── Navbar.astro      # Navegación global
-│   │   └── sections/             # ⭐ Secciones de la landing
-│   │       ├── Hero.astro
-│   │       ├── AboutFloatingCard.astro
-│   │       ├── Services.astro
-│   │       ├── ValueProposition.astro
-│   │       ├── Methodology.astro
-│   │       ├── Contact.astro
-│   │       ├── OurClients.astro
-│   │       ├── OurCommunity.astro
-│   │       └── Footer.astro
-│   │
-│   ├── 📁 layouts/
-│   │   └── MainLayout.astro      # Layout wrapper principal
-│   │
-│   ├── 📁 pages/
-│   │   └── index.astro           # ⭐ Punto de entrada
-│   │
-│   └── 📁 styles/
-│       └── global.css            # Estilos globales
-│
-├── astro.config.mjs              # Config de Astro
-├── tailwind.config.cjs           # Config de Tailwind
-├── postcss.config.cjs            # Config de PostCSS
-└── package.json                  # Dependencias
-```
+> "Hemos implementado una arquitectura modular. Para evitar repetición de código, creamos una **librería de componentes UI interna** ubicada en `src/components/ui`."
 
-### Qué decir:
-> "La arquitectura sigue el principio de **separación de responsabilidades**. Cada sección de la landing es un componente independiente, lo que facilita el mantenimiento y permite agregar nuevas secciones sin afectar las existentes."
+**Componentes Base Reutilizables:**
+1.  **`Button.astro`**: Maneja variantes (primary, ghost, outline) y polimorfismo (renderiza como `<a>` o `<button>`).
+2.  **`Card.astro`**: Estandariza las tarjetas de servicios y valores con soporte de alternancia de layout.
+3.  **`SectionTitle.astro`**: Unifica la tipografía y espaciado de todos los encabezados de sección.
 
----
-
-## 📄 PARTE 3: Demostración de Código (5 min)
-
-### 3.1 Abrir `src/pages/index.astro`
-
-> "Este es el punto de entrada de la aplicación. Aquí se ensamblan todas las secciones como bloques de LEGO."
-
+**Ejemplo de uso (mostrar código):**
 ```astro
 ---
-import "../styles/global.css";
-import MainLayout from "../layouts/MainLayout.astro";
-import Hero from "../components/sections/Hero.astro";
-import AboutFloatingCard from "../components/sections/AboutFloatingCard.astro";
-import Services from "../components/sections/Services.astro";
-// ... más imports
+import { Button, SectionTitle } from "../components/ui";
 ---
 
-<MainLayout>
-  <Hero />
-  <AboutFloatingCard />
-  <Services />
-  <ValueProposition />
-  <Methodology />
-  <Contact />
-  <OurClients />
-  <OurCommunity />
-  <Footer />
-</MainLayout>
+<SectionTitle subtitle="Innovación">Nuestros Servicios</SectionTitle>
+<Button href="#contact">Contáctanos</Button>
 ```
 
-**Puntos a destacar:**
-- Sintaxis clara y declarativa
-- Orden visual = orden en el DOM
-- Fácil reordenar o agregar secciones
+---
+
+## ⚡ PARTE 3: Optimizaciones Técnicas y SEO (5 min)
+
+### Estrategia de Rendimiento (Performance)
+
+> "El rendimiento no es un añadido, es la base. Implementamos varias capas de optimización:"
+
+1.  **Lazy Loading Inteligente:**
+    *   **Hero Image (LCP):** `loading="eager"` + `fetchpriority="high"` y `decoding="async"` para carga instantánea.
+    *   **Resto de imágenes:** `loading="lazy"` nativo del navegador para ahorrar ancho de banda.
+2.  **Optimización de Assets:**
+    *   Uso de formatos modernos (WebP/AVIF) mediante Astro Assets.
+    *   Pre-carga (`<link rel="preload">`) de fuentes críticas (Rivera y Geometr212).
+3.  **Compresión:** HTML minificado en producción (`compressHTML: true` en config).
+
+### SEO Técnico (Search Engine Optimization)
+
+> "El sitio está técnicamente optimizado para motores de búsqueda desde el 'build time'."
+
+*   **Meta Tags Completos:** Title, Description, Keywords, Author.
+*   **Open Graph & Twitter Cards:** Previsualizaciones ricas para redes sociales.
+*   **Canonical URLs:** Prevención de contenido duplicado.
+*   **Robots.txt & Sitemap:** Generación automática para indexación correcta.
 
 ---
 
-### 3.2 Abrir un componente de sección (ej. `Methodology.astro`)
+## 🎨 PARTE 4: Sistema de Diseño (3 min)
 
-> "Veamos la estructura de un componente típico..."
+### Consolidación en Tailwind
 
-**Estructura de un componente `.astro`:**
-```astro
----
-// Parte 1: JavaScript/TypeScript (se ejecuta en BUILD TIME)
-const data = await fetchData();
----
+> "Centralizamos todo el sistema de diseño en `tailwind.config.cjs`. No tenemos CSS global disperso."
 
-<!-- Parte 2: Template HTML con Tailwind CSS -->
-<section class="py-16 bg-white">
-  <h2 class="text-3xl font-bold">Título</h2>
-  <!-- contenido -->
-</section>
-
-<style>
-  /* Parte 3: CSS con scope automático (opcional) */
-</style>
-```
-
-**Qué decir:**
-> "Los componentes Astro tienen tres partes: el frontmatter para lógica de build, el template HTML, y opcionalmente estilos con scope automático. Todo el JavaScript del frontmatter se ejecuta en tiempo de compilación, no en el navegador."
-
----
-
-## 🎨 PARTE 4: Sistema de Estilos (3 min)
-
-### Tailwind CSS
-
-> "Usamos Tailwind CSS como sistema de diseño. Las clases utilitarias permiten iterar rápidamente sin salir del HTML."
-
-**Ejemplo práctico:**
-```html
-<!-- Antes (CSS tradicional) -->
-<div class="card">...</div>
-
-<!-- Con Tailwind -->
-<div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-  ...
-</div>
-```
-
-**Ventajas:**
-- ✅ No hay CSS muerto en producción (purging automático)
-- ✅ Diseño responsivo con prefijos (`md:`, `lg:`)
-- ✅ Consistencia visual garantizada
-- ✅ Bundle CSS final muy pequeño
+*   **Fuentes custom:** Definidas como `font-heading` y `font-body`.
+*   **Colores de marca:** `brand-primary`, `brand-light`, etc.
+*   **Animaciones:** Keyframes personalizados integrados en clases de utilidad (`animate-fade-in`).
 
 ---
 
 ## ⚡ PARTE 5: Build y Despliegue (2 min)
 
-### Comandos de desarrollo
-
 ```bash
-# Desarrollo
-npm run dev          # Servidor en localhost:4321
-
-# Producción
-npm run build        # Genera ./dist/ con HTML estático
-npm run preview      # Previsualiza el build
+npm run build
 ```
 
-### Output de producción
-
-> "El comando `build` genera una carpeta `dist/` con HTML, CSS y assets optimizados. Este output es **100% estático**, listo para desplegar en cualquier CDN."
-
-**Opciones de despliegue:**
-- Vercel (recomendado, zero-config)
-- Netlify
-- Cloudflare Pages
-- GitHub Pages
-- Cualquier servidor que sirva archivos estáticos
+> "El resultado final es una carpeta `dist/` con **HTML estático puro**. Esto permite despliegues 'serverless' o en CDNs globales (Vercel, Cloudflare, Netlify) con costos de infraestructura mínimos y seguridad máxima."
 
 ---
 
-## 📊 PARTE 6: Rendimiento (2 min)
+## 🔄 PARTE 6: Escalabilidad y Mantenimiento (3 min)
 
-### Mostrar en navegador: DevTools > Lighthouse
+### ¿Cómo escalar el proyecto?
 
-> "Una de las grandes ventajas de Astro es el rendimiento. Veamos el score de Lighthouse..."
-
-**Métricas esperadas:**
-- 🟢 Performance: 95-100
-- 🟢 Accessibility: 90+
-- 🟢 Best Practices: 95+
-- 🟢 SEO: 95+
-
-**Por qué es tan rápido:**
-- Zero JavaScript por defecto
-- HTML pre-renderizado
-- CSS optimizado y purgado
-- Imágenes servidas desde /public (sin procesamiento)
+1.  **Agregar una nueva página:** Crear archivo en `src/pages/nueva-pagina.astro`.
+2.  **Nuevo componente visual:** Crear en `src/components/ui/` y exportar en `index.ts`.
+3.  **Gestión de estilos:** Modificar variables en `tailwind.config.cjs` propaga cambios a todo el sitio.
 
 ---
 
-## 🔄 PARTE 7: Escalabilidad (2 min)
+## ❓ Preguntas Frecuentes Técnicas
 
-### Agregar una nueva sección
-
-> "Si necesitamos agregar una nueva sección, el proceso es simple:"
-
-**Paso 1:** Crear componente
-```bash
-# Crear archivo
-touch src/components/sections/NuevaSeccion.astro
-```
-
-**Paso 2:** Escribir el componente
-```astro
----
-// Lógica si es necesaria
----
-
-<section class="py-16 bg-gray-100">
-  <div class="container mx-auto">
-    <h2>Nueva Sección</h2>
-    <!-- contenido -->
-  </div>
-</section>
-```
-
-**Paso 3:** Importar en `index.astro`
-```astro
-import NuevaSeccion from "../components/sections/NuevaSeccion.astro";
-
-<MainLayout>
-  ...
-  <NuevaSeccion />
-  <Footer />
-</MainLayout>
-```
-
-> "En menos de 5 minutos podemos tener una nueva sección funcionando."
+*   **¿Por qué no React/Vue?**
+    *   "Para una landing page, la hidratación de JS es innecesaria y costosa en performance. Astro nos da la sintaxis de componentes (similar a JSX) pero con output HTML puro."
+*   **¿Cómo se integra con Backend?**
+    *   "Los formularios son estándar HTML. Pueden apuntar a cualquier endpoint API, Server Function o servicio como Formspree."
 
 ---
 
-## ❓ Preguntas Frecuentes
+## 🎬 Cierre
 
-### ¿Se puede agregar interactividad?
-> "Sí. Astro soporta React, Vue, Svelte y otros frameworks. Podemos hidratar componentes específicos cuando necesitemos interactividad del lado del cliente."
-
-### ¿Cómo se manejan los formularios?
-> "Los formularios pueden conectarse a servicios como Formspree, Netlify Forms, o un backend propio vía API."
-
-### ¿Es fácil de mantener?
-> "Absolutamente. La estructura modular significa que cada sección es independiente. Actualizar una sección no afecta a las demás."
-
-### ¿Qué pasa si necesitamos un CMS?
-> "Astro se integra con headless CMS como Contentful, Sanity, Strapi, o incluso archivos Markdown locales."
-
----
-
-## 🎬 Cierre de la Presentación
-
-### Resumen ejecutivo:
-> "En resumen, ArenaLogix es una landing page moderna construida con las mejores prácticas de la industria:
-> - **Astro** para rendimiento excepcional
-> - **Tailwind CSS** para diseño consistente y mantenible  
-> - **Arquitectura modular** para escalabilidad
-> - **Output estático** para despliegue simple y económico"
-
-### Próximos pasos sugeridos:
-1. Revisión del diseño actual
-2. Definir contenido final
-3. Configurar dominio y hosting
-4. Desplegar a producción
-
----
-
-## 📚 Recursos Adicionales
-
-- [Documentación de Astro](https://docs.astro.build)
-- [Documentación de Tailwind CSS](https://tailwindcss.com/docs)
-- [Guía de despliegue de Astro](https://docs.astro.build/en/guides/deploy/)
-
----
-
-> **Nota:** Este documento está diseñado para ser usado como guía durante la presentación. Los tiempos son aproximados y pueden ajustarse según las preguntas del cliente.
+> "ArenaLogix no es solo una 'página web', es un producto de software optimizado, escalable y construido con los estándares más altos de la ingeniería web moderna."
