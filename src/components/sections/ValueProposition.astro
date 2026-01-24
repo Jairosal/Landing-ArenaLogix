@@ -1,3 +1,7 @@
+---
+import Button from "../ui/Button.astro";
+---
+
 <section class="bg-white py-10 lg:py-10 font-body overflow-hidden">
   <div class="max-w-7xl mx-auto px-6">
     <div
@@ -109,13 +113,14 @@
           para fortalecer nuestra alianza.
         </p>
 
-        <div class="w-full flex justify-center md:justify-start relative z-20">
-          <a
+        <div class="w-full flex justify-center md:justify-start relative z-20 text-nowrap">
+          <Button
+            variant="primary"
             href="#cotizar"
-            class="bg-brand-primary hover:bg-brand-primary/60 text-white font-body font-bold text-center leading-none py-2.5 sm:py-3 px-6 sm:px-8 rounded-full shadow-lg uppercase tracking-wide transition-colors text-xs cursor-pointer inline-block relative z-20"
+            size="md"
           >
             Quiero mi software
-          </a>
+          </Button>
         </div>
 
         <div

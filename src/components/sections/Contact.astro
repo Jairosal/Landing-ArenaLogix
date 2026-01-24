@@ -1,4 +1,7 @@
 ---
+import Button from "../ui/Button.astro";
+import Card from "../ui/Card.astro";
+
 const cards = [
   {
     image: "/assets/Recurso 9.png",
@@ -27,7 +30,10 @@ const cards = [
 ];
 ---
 
-<section id="contact" class="bg-gray-50 py-16 lg:py-24 font-body overflow-hidden relative">
+<section
+  id="contact"
+  class="bg-gray-50 py-16 lg:py-24 font-body overflow-hidden relative"
+>
   <div class="absolute inset-0 z-0 pointer-events-none opacity-50">
     <img
       src="/assets/Recurso 1.png"
@@ -41,64 +47,44 @@ const cards = [
       <div class="space-y-10">
         <div class="space-y-0 relative">
           <!-- Marco blanco transparente que se extiende de lado a lado de la pantalla -->
-          <div class="absolute left-1/2 -translate-x-1/2 w-screen -inset-y-4 sm:-inset-y-6 bg-white/40 backdrop-blur-sm"></div>
-          
+          <div
+            class="absolute left-1/2 -translate-x-1/2 w-screen -inset-y-4 sm:-inset-y-6 bg-white/40 backdrop-blur-sm"
+          >
+          </div>
+
           <h2
-          class="text-3xl lg:text-4xl font-body font-bold leading-none tracking-tight text-gray-900 text-center lg:text-left relative z-10"
-        >
-          Tu visión, nuestra tecnología,
-        </h2>
-        <h2
-          class="text-3xl lg:text-4xl font-body font-bold leading-none tracking-tight text-gray-900 text-center lg:text-right relative z-10"
-        >
-          resultados extraordinarios.
-        </h2>
+            class="text-3xl lg:text-4xl font-body font-bold leading-none tracking-tight text-gray-900 text-center lg:text-left relative z-10"
+          >
+            Tu visión, nuestra tecnología,
+          </h2>
+          <h2
+            class="text-3xl lg:text-4xl font-body font-bold leading-none tracking-tight text-gray-900 text-center lg:text-right relative z-10"
+          >
+            resultados extraordinarios.
+          </h2>
         </div>
-        
 
         <div class="flex flex-col space-y-6 w-full">
-  {
-    cards.map((card, index) => (
-      <div
-       class={`flex items-center bg-white rounded-xl shadow-[8px_8px_16px_rgba(0,0,0,0.50)] p-2 sm:p-3 md:p-4 border border-gray-100 max-w-[280px] sm:max-w-[260px] md:max-w-[280px] lg:max-w-[320px] transition-transform hover:scale-[1.02]  ${index % 2 !== 0 ? 'self-end md:-translate-x-8 lg:-translate-x-12' : 'self-start md:translate-x-8 lg:translate-x-12'}`}>
-      <!-- Image/Icon Container -->
-      <div class="flex-shrink-0 w-8 sm:w-10 md:w-12 mr-2 sm:mr-3 rounded-lg flex items-center justify-center overflow-hidden">
-          {card.image && card.image !== "/path/to/imageX.png" ? (
-            <img
-              src={card.image}
-              alt="Icon"
-              class="w-full h-full object-contain p-0.5"
-            />
-          ) : (
-            <svg
-              class="w-6 h-6 sm:w-7 sm:h-7 text-gray-400"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-              />
-            </svg>
-          )}
+          {
+            cards.map((card, index) => (
+              <Card
+                image={card.image}
+                title=""
+                alternating={true}
+                index={index}
+              >
+                {card.text}
+              </Card>
+            ))
+          }
         </div>
-
-        <div class="flex-1 min-w-0 flex items-center py-1">
-          <p class="text-[7px] sm:text-[8px] md:text-[8px] text-gray-900 leading-snug font-semibold text-justify font-geometr">
-            {card.text}
-          </p>
-        </div>
-      </div>
-    ))
-  }
-</div>
       </div>
 
       <div class="flex justify-center lg:justify-end">
-        <div id="cotizar" class="flex justify-center lg:justify-end w-full lg:-mt-32 lg:mr-8">
+        <div
+          id="cotizar"
+          class="flex justify-center lg:justify-end w-full lg:-mt-32 lg:mr-8"
+        >
           <div
             class="bg-[#e5f5f7] border border-[#DCEBF6] rounded-[1.5rem] md:rounded-[2rem] p-4 sm:p-6 md:p-8 shadow-[8px_8px_16px_rgba(0,0,0,0.50)] w-full max-w-sm md:max-w-lg relative font-body"
           >
@@ -110,7 +96,10 @@ const cards = [
 
             <form class="space-y-4 sm:space-y-6">
               <div class="border border-white rounded-xl sm:rounded-[1rem] p-2">
-                <label class="block text-xs sm:text-sm font-geometr font-bold text-gray-900 mb-1" for="name">
+                <label
+                  class="block text-xs sm:text-sm font-geometr font-bold text-gray-900 mb-1"
+                  for="name"
+                >
                   Nombre y Apellido:
                 </label>
                 <input
@@ -121,7 +110,10 @@ const cards = [
               </div>
 
               <div class="border border-white rounded-xl sm:rounded-[1rem] p-2">
-                <label class="block text-xs sm:text-sm font-geometr font-bold text-gray-900 mb-1" for="phone">
+                <label
+                  class="block text-xs sm:text-sm font-geometr font-bold text-gray-900 mb-1"
+                  for="phone"
+                >
                   Teléfono:
                 </label>
                 <input
@@ -132,7 +124,10 @@ const cards = [
               </div>
 
               <div class="border border-white rounded-xl sm:rounded-[1rem] p-2">
-                <label class="block text-xs sm:text-sm font-geometr font-bold text-gray-900 mb-1" for="email">
+                <label
+                  class="block text-xs sm:text-sm font-geometr font-bold text-gray-900 mb-1"
+                  for="email"
+                >
                   E-Mail:
                 </label>
                 <input
@@ -143,31 +138,39 @@ const cards = [
               </div>
 
               <!-- Checkbox con texto inline -->
-              <div class="border border-white rounded-xl sm:rounded-[1rem] p-2 sm:p-3">
-                <label for="privacy" class="cursor-pointer text-[10px] sm:text-xs text-gray-900 font-geometr leading-relaxed text-justify block">
+              <div
+                class="border border-white rounded-xl sm:rounded-[1rem] p-2 sm:p-3"
+              >
+                <label
+                  for="privacy"
+                  class="cursor-pointer text-[10px] sm:text-xs text-gray-900 font-geometr leading-relaxed text-justify block"
+                >
                   <input
                     id="privacy"
                     type="checkbox"
                     class="h-3.5 w-3.5 sm:h-4 sm:w-4 rounded border-2 border-brand-primary accent-brand-primary focus:ring-brand-primary cursor-pointer align-middle mr-1.5 inline-block"
                   />
-                  Autorizo expresamente a ArenaLogix para que me contacten y/o
-                  envíen información respecto de sus programas de pregrados y
-                  otra información de interés, así como la política de
-                  privacidad y protección de datos personales del sitio web
+                  Autorizo expresamente a ArenaLogix para que me contacten y/o envíen
+                  información respecto de sus programas de pregrados y otra información
+                  de interés, así como la política de privacidad y protección de datos
+                  personales del sitio web
                 </label>
               </div>
 
               <div class="pt-1 sm:pt-2">
-                <button
+                <Button
                   type="submit"
-                  class="w-full bg-brand-primary hover:bg-brand-primary/60 text-white font-bold py-2.5 sm:py-3 px-4 sm:px-6 rounded-full shadow-lg uppercase tracking-wide transition-colors text-sm sm:text-base"
+                  variant="primary"
+                  size="lg"
+                  fullWidth={true}
                 >
                   Enviar mis datos
-                </button>
+                </Button>
               </div>
             </form>
           </div>
         </div>
+      </div>
     </div>
   </div>
 </section>

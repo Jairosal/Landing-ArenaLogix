@@ -1,5 +1,5 @@
 ---
-
+import Button from "../ui/Button.astro";
 ---
 
 <footer class="relative font-body overflow-hidden bg-white">
@@ -29,8 +29,11 @@
             </div>
 
             <div
-                class="grid grid-cols-2 gap-6 text-sm justify-end lg:ml-auto leading-none font-geometr"
-            >
+  class="grid grid-cols-2 gap-6 text-sm 
+         max-w-md mx-auto 
+         lg:max-w-none lg:ml-auto lg:justify-end"
+>
+
                 <!-- Column 1: AYUDA + NOSOTROS -->
                 <div class="space-y-6">
                     <div>
@@ -110,13 +113,13 @@
                         </ul>
                     </div>
                     <div class="pt-4">
-                        <a
+                        <Button 
                             href="https://web.whatsapp.com/"
-                            target="_blank"
-                            class="bg-brand-primary hover:bg-brand-primary/80 text-white px-6 py-2 rounded-full font-bold text-sm uppercase tracking-wider shadow-md hover:shadow-lg transition-all"
+                            variant="primary"
+                            size="md"
                         >
                             Chatear
-                        </a>
+                        </Button>
                     </div>
                 </div>
             </div>
@@ -124,7 +127,7 @@
 
         <div class="mt-12 text-center">
             <p
-                class="text-xl lg:text-4xl font-heading font-bold text-gray-800 tracking-wide"
+                class="text-xl md:text-2xl lg:text-4xl font-heading font-bold text-gray-800 tracking-wide"
             >
                 ArenaLogix
             </p>
