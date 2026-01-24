@@ -5,7 +5,7 @@ import Button from "../ui/Button.astro";
 <section class="bg-white py-10 lg:py-10 font-body overflow-hidden">
   <div class="max-w-7xl mx-auto px-6">
     <div
-      class="grid grid-cols-1 md:grid-cols-[260px_1fr_240px] lg:grid-cols-[380px_1fr_320px] xl:grid-cols-[420px_1fr_380px] gap-12 md:gap-4 lg:gap-8 items-center md:items-start"
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[380px_1fr_320px] xl:grid-cols-[420px_1fr_380px] gap-12 md:gap-4 lg:gap-8 items-center md:items-start"
     >
       <div class="relative z-10">
         <div
@@ -31,7 +31,7 @@ import Button from "../ui/Button.astro";
         </div>
 
         <div
-          class="space-y-3 max-w-sm md:max-w-none mx-auto md:mx-0 mt-8 md:mt-24 lg:mt-40 md:ml-4 lg:ml-12"
+          class="space-y-3 max-w-sm md:max-w-none mx-auto md:mx-0 mt-8 md:mt-8 lg:mt-40 md:ml-4 lg:ml-12"
         >
           <div
             class="border border-gray-800 rounded-2xl px-2 py-1 pr-8 sm:px-4 sm:pr-12 bg-white relative shadow-sm ml-24 lg:translate-x-12"
@@ -90,49 +90,55 @@ import Button from "../ui/Button.astro";
         </div>
       </div>
 
-      <div class="flex justify-center my-0 md:my-2 lg:my-4 relative z-0">
+      <div
+        class="flex justify-center my-0 md:my-2 lg:my-4 relative z-0 md:row-span-2 lg:row-span-1"
+      >
         <img
           src="/assets/phone.png"
           alt="Vista previa de aplicación móvil desarrollada por ArenaLogix"
-          class="w-full max-w-[360px] sm:max-w-[460px] md:max-w-none md:w-[125%] lg:w-[140%] xl:w-[160%] object-contain drop-shadow-2xl translate-x-16 md:translate-x-12 lg:translate-x-28"
+          class="w-full max-w-[360px] sm:max-w-[460px] md:max-w-none md:w-[150%] lg:w-[140%] xl:w-[160%] object-contain drop-shadow-2xl translate-x-16 md:translate-x-32 lg:translate-x-28"
           loading="lazy"
           decoding="async"
         />
       </div>
       <div
-        class="flex flex-col items-center md:items-start justify-start space-y-4 pl-0 md:pr-0 lg:pr-12 md:mt-24 lg:mt-32"
+        class="flex flex-col items-center md:grid md:grid-cols-2 md:items-center md:gap-4 md:space-y-0 justify-start space-y-4 pl-0 md:pr-0 lg:pr-12 md:mt-0 lg:mt-32 lg:flex lg:flex-col lg:space-y-4"
       >
-        <p
-          class="text-sm text-gray-500 font-body font-semibold leading-none text-justify max-w-[260px]"
-        >
-          En ArenaLogix nos distinguimos por nuestra innovación constante,
-          soluciones personalizadas y soporte ininterrumpido que garantiza el
-          éxito a largo plazo de nuestros clientes. Nuestra filosofía se basa en
-          cultivar relaciones duraderas fundamentadas en la confianza mutua y el
-          crecimiento compartido, convirtiendo cada desafío en una oportunidad
-          para fortalecer nuestra alianza.
-        </p>
-
-        <div class="w-full flex justify-center md:justify-start relative z-20 text-nowrap">
-          <Button
-            variant="primary"
-            href="#cotizar"
-            size="md"
+        <div class="md:col-span-1">
+          <p
+            class="text-sm text-gray-500 font-body font-semibold leading-none text-justify max-w-[260px]"
           >
-            Quiero mi software
-          </Button>
+            En ArenaLogix nos distinguimos por nuestra innovación constante,
+            soluciones personalizadas y soporte ininterrumpido que garantiza el
+            éxito a largo plazo de nuestros clientes. Nuestra filosofía se basa
+            en cultivar relaciones duraderas fundamentadas en la confianza mutua
+            y el crecimiento compartido, convirtiendo cada desafío en una
+            oportunidad para fortalecer nuestra alianza.
+          </p>
         </div>
 
         <div
-          class="pt-2 md:pt-8 lg:pt-12 self-center md:self-end pr-0 md:pr-4 lg:pr-12 md:ml-0"
+          class="md:col-span-1 flex flex-col items-center md:items-start gap-4 lg:contents"
         >
-          <img
-            src="/assets/qr.png"
-            alt="Código QR para contactar a ArenaLogix"
-            class="w-36 h-36 md:w-40 md:h-40 lg:w-40 lg:h-40 xl:w-40 xl:h-40 object-contain"
-            loading="lazy"
-            decoding="async"
-          />
+          <div
+            class="w-full flex justify-center md:justify-center md:ml-4 relative z-20 text-nowrap"
+          >
+            <Button variant="primary" href="#cotizar" size="md">
+              Quiero mi software
+            </Button>
+          </div>
+
+          <div
+            class="pt-2 md:pt-0 lg:pt-12 self-center md:self-center lg:self-end pr-0 md:pr-0 lg:pr-12 md:ml-0"
+          >
+            <img
+              src="/assets/qr.png"
+              alt="Código QR para contactar a ArenaLogix"
+              class="w-36 h-36 md:w-40 md:h-40 lg:w-40 lg:h-40 xl:w-40 xl:h-40 object-contain"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
         </div>
       </div>
     </div>
