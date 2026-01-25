@@ -1,16 +1,18 @@
 ---
 import Button from "../ui/Button.astro";
+import { Image } from "astro:assets";
+import bgFooter from "../../assets/bg-footer.png";
+import transforIdeas from "../../assets/transfor-ideas-2.png";
 ---
 
 <footer class="relative font-body overflow-hidden bg-white">
     <!-- Background Image -->
     <div class="absolute inset-0 z-0">
-        <img
-            src="/assets/bg-footer.png"
+        <Image
+            src={bgFooter}
             alt=""
             class="w-full h-full object-cover -mt-8"
             loading="lazy"
-            decoding="async"
         />
     </div>
 
@@ -19,21 +21,19 @@ import Button from "../ui/Button.astro";
             class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start"
         >
             <div class="flex justify-center lg:justify-start">
-                <img
-                    src="/assets/transfor-ideas-2.png"
+                <Image
+                    src={transforIdeas}
                     alt="ArenaLogix - Transformamos tus ideas en realidad digital"
                     class="w-full max-w-md lg:max-w-lg h-auto object-contain"
                     loading="lazy"
-                    decoding="async"
                 />
             </div>
 
             <div
-  class="grid grid-cols-2 gap-6 text-sm 
-         max-w-md mx-auto 
+                class="grid grid-cols-2 gap-6 text-sm
+         max-w-md mx-auto
          lg:max-w-none lg:ml-auto lg:justify-end"
->
-
+            >
                 <!-- Column 1: AYUDA + NOSOTROS -->
                 <div class="space-y-6">
                     <div>
@@ -113,7 +113,7 @@ import Button from "../ui/Button.astro";
                         </ul>
                     </div>
                     <div class="pt-4">
-                        <Button 
+                        <Button
                             href="https://web.whatsapp.com/"
                             variant="primary"
                             size="md"

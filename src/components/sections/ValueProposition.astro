@@ -1,5 +1,10 @@
 ---
 import Button from "../ui/Button.astro";
+import { Image } from "astro:assets";
+import phoneImg from "../../assets/phone.png";
+import arrowBlack from "../../assets/arrow-black.png";
+import constantSupport from "../../assets/constant-support.png";
+import qrImg from "../../assets/qr.png";
 ---
 
 <section class="bg-white py-10 lg:py-10 font-body overflow-hidden">
@@ -48,8 +53,8 @@ import Button from "../ui/Button.astro";
               soluciones creativas y eficaces para cada desafío.
             </p>
             <button>
-              <img
-                src="/assets/arrow-black.png"
+              <Image
+                src={arrowBlack}
                 alt="arrow-black"
                 class="absolute bottom-3 right-2 w-6 h-6 sm:w-8 sm:h-8"
               />
@@ -72,8 +77,8 @@ import Button from "../ui/Button.astro";
                 asegurando resultados consistentes y de impacto.
               </p>
               <button>
-                <img
-                  src="/assets/arrow-black.png"
+                <Image
+                  src={arrowBlack}
                   alt="arrow-black"
                   class="absolute bottom-3 right-2 w-6 h-6 sm:w-8 sm:h-8"
                 />
@@ -81,8 +86,8 @@ import Button from "../ui/Button.astro";
             </div>
 
             <!-- Support Box -->
-            <img
-              src="/assets/constant-support.png"
+            <Image
+              src={constantSupport}
               alt="Soporte Constante"
               class="rounded-xl w-20 sm:w-28 h-auto object-cover mt-7"
             />
@@ -93,12 +98,12 @@ import Button from "../ui/Button.astro";
       <div
         class="flex justify-center my-0 md:my-2 lg:my-4 relative z-0 md:row-span-2 lg:row-span-1"
       >
-        <img
-          src="/assets/phone.png"
+        <Image
+          src={phoneImg}
           alt="Vista previa de aplicación móvil desarrollada por ArenaLogix"
           class="w-full max-w-[360px] sm:max-w-[460px] md:max-w-none md:w-[150%] lg:w-[140%] xl:w-[160%] object-contain drop-shadow-2xl translate-x-16 md:translate-x-32 lg:translate-x-28"
           loading="lazy"
-          decoding="async"
+          format="webp"
         />
       </div>
       <div
@@ -131,12 +136,11 @@ import Button from "../ui/Button.astro";
           <div
             class="pt-2 md:pt-0 lg:pt-12 self-center md:self-center lg:self-end pr-0 md:pr-0 lg:pr-12 md:ml-0"
           >
-            <img
-              src="/assets/qr.png"
+            <Image
+              src={qrImg}
               alt="Código QR para contactar a ArenaLogix"
               class="w-36 h-36 md:w-40 md:h-40 lg:w-40 lg:h-40 xl:w-40 xl:h-40 object-contain"
               loading="lazy"
-              decoding="async"
             />
           </div>
         </div>

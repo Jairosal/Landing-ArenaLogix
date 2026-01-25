@@ -1,45 +1,13 @@
-<!-- ---
-interface InstagramPost {
-  id: string;
-  media_type: 'IMAGE' | 'VIDEO' | 'CAROUSEL_ALBUM';
-  media_url: string;
-  permalink: string;
-  caption?: string;
-  timestamp: string;
-}
-
-const token = import.meta.env.INSTAGRAM_TOKEN;
-const igId = import.meta.env.INSTAGRAM_IG_ID;
-
-const res = await fetch(
-  `https://graph.facebook.com/v19.0/${igId}/media?fields=id,media_type,media_url,permalink,caption,timestamp&access_token=${token}`
-);
-
-const { data }: { data: InstagramPost[] } = await res.json();
-
-
-// Opcional: filtrar solo imágenes
-const posts = data.filter(p => p.media_type === 'IMAGE');
 ---
-
-<section class="grid grid-cols-2 md:grid-cols-4 gap-4">
-  {posts.slice(0, 8).map(post => (
-    <a href={post.permalink} target="_blank" rel="noopener">
-      <img
-        src={post.media_url}
-        alt={post.caption ?? 'Instagram post'}
-        loading="lazy"
-        class="rounded-xl hover:scale-105 transition"
-      />
-    </a>
-  ))}
-</section> -->
+import { Image } from "astro:assets";
+import communityImg from "../../assets/our-community.png";
+---
 
 <section class="py-8 bg-white font-body">
     <div class="max-w-6xl mx-auto px-6">
         <div class="relative">
-            <img
-                src="/assets/our-community.png"
+            <Image
+                src={communityImg}
                 alt="¡Conoce nuestra comunidad! y síguenos"
                 class="w-full h-auto object-contain"
             />

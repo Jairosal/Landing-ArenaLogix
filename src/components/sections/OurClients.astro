@@ -1,7 +1,16 @@
 ---
+import { Image } from "astro:assets";
+import logoCatBlue from "../../assets/logo-cat-blue.png";
+import desSoft from "../../assets/des-soft-personalizado.png";
+import fondoAzul from "../../assets/fondo-azul.png";
+import porqueElegirnos from "../../assets/porque-elegirnos.png";
+import calificacion from "../../assets/calificacion.png";
+import arrowBlack from "../../assets/arrow-black.png";
+import arrowBlue from "../../assets/arrow-blue.png";
+
 const clients = Array(6).fill({
     name: "Cliente",
-    logo: "/assets/logo-cat-blue.png",
+    logo: logoCatBlue,
 });
 
 const testimonials = [
@@ -12,7 +21,7 @@ const testimonials = [
         review: "ArenaLogix transformó completamente nuestros procesos de inventario y ventas. Su enfoque personalizado nos impresionó desde el inicio - realmente entendieron nuestras necesidades específicas. En 6 meses redujimos errores de inventario en 85% con su solución de automatización. Su metodología ágil y soporte continuo son excepcionales. Definitivamente nuestro socio tecnológico de confianza.",
         author: "María Elena González",
         role: "Directora de Operaciones, RetailPlus",
-        image: "/assets/des-soft-personalizado.png",
+        image: desSoft,
     },
     {
         clientType: "Cliente Startup Tecnológica",
@@ -21,7 +30,7 @@ const testimonials = [
         review: "Como startup en crecimiento rápido, necesitábamos una solución escalable sin comprometer calidad. ArenaLogix superó nuestras expectativas desarrollando una aplicación web y móvil que anticipó las necesidades futuras del mercado. Durante una crisis inesperada, nuestra plataforma se mantuvo estable y nos permitió adaptarnos rápidamente. Son verdaderos colaboradores comprometidos con nuestro éxito.",
         author: "Carlos Mendoza",
         role: "CEO, InnovateTech Solutions",
-        image: "/assets/des-soft-personalizado.png",
+        image: desSoft,
     },
 ];
 ---
@@ -31,8 +40,8 @@ const testimonials = [
     aria-labelledby="clients-title"
 >
     <div class="absolute inset-0 z-0" aria-hidden="true">
-        <img
-            src="/assets/fondo-azul.png"
+        <Image
+            src={fondoAzul}
             alt=""
             class="w-full h-full object-cover"
             loading="lazy"
@@ -53,7 +62,7 @@ const testimonials = [
             {
                 clients.map((client, index) => (
                     <div class="w-32 h-32 flex items-center justify-center p-4 transition-transform hover:scale-105">
-                        <img
+                        <Image
                             src={client.logo}
                             alt={`Logo de ${client.name} ${index + 1}`}
                             class="w-full h-full object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
@@ -66,7 +75,9 @@ const testimonials = [
     </div>
 </section>
 
-<section id="community" class="py-16 bg-white overflow-hidden">
+<section id="community" 
+         class="py-16 bg-white overflow-hidden"
+>
     <div class="max-w-7xl mx-auto px-6 space-y-16">
 
         <div class="flex items-center justify-between gap-4 lg:gap-8">
@@ -76,8 +87,8 @@ const testimonials = [
             <div class="flex-1 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-12 items-center">
                 <!-- Left: Porque elegirnos -->
                 <div class="flex justify-center md:justify-start">
-                     <img
-                        src="/assets/porque-elegirnos.png"
+                     <Image
+                        src={porqueElegirnos}
                         alt="¿Por qué elegirnos a nosotros?"
                         class="max-w-full h-auto object-contain"
                         style="max-height: 150px;"
@@ -85,8 +96,8 @@ const testimonials = [
                 </div>
 
                 <div class="flex justify-center md:justify-end">
-                     <img
-                        src="/assets/calificacion.png"
+                     <Image
+                        src={calificacion}
                         alt="Nuestra calificación Excelente"
                         class="max-w-full h-auto object-contain"
                         style="max-height: 120px;"
@@ -106,7 +117,7 @@ const testimonials = [
                 class="p-2 rounded-full hover:bg-gray-100 transition-colors flex-shrink-0"
                 aria-label="Previous testimonial"
             >
-                <img src="/assets/arrow-black.png" 
+                <Image src={arrowBlack} 
                 alt="Arrow Left"
                 class="w-8 h-8 md:w-10 md:h-10 -scale-x-100"
                 />
@@ -118,7 +129,7 @@ const testimonials = [
                         <div class="flex-shrink-0 w-full md:w-[calc(50%-12px)] flex flex-col md:flex-row bg-white rounded-2xl overflow-hidden shadow-lg">
                             <!-- Image Side -->
                             <div class="w-full h-40 md:h-auto md:w-40 flex-shrink-0 relative">
-                                <img 
+                                <Image 
                                     src={testimonial.image} 
                                     alt="Desarrollo de Software" 
                                     class="w-full h-full object-contain md:object-contain"
@@ -165,7 +176,7 @@ const testimonials = [
                 class="p-2 rounded-full hover:bg-gray-100 transition-colors flex-shrink-0"
                 aria-label="Next testimonial"
             >
-                <img src="/assets/arrow-blue.png" 
+                <Image src={arrowBlue} 
                 alt="Arrow Right"
                 class="w-8 h-8 md:w-10 md:h-10"
                 />

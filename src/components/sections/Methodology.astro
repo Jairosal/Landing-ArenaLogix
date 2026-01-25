@@ -1,5 +1,10 @@
 ---
 import Button from "../ui/Button.astro";
+import { Image } from "astro:assets";
+import engranajeMano from "../../assets/engranaje-sobre-mano.png";
+import engranajeImg from "../../assets/engranaje.png";
+import pincelImg from "../../assets/pincel.png";
+import escalaImg from "../../assets/escala-sin-lim.png";
 ---
 
 <section class="bg-gray-100 pt-16 lg:pt-24 pb-0 font-body">
@@ -13,10 +18,11 @@ import Button from "../ui/Button.astro";
                 <div
                     class="relative w-32 h-32 flex items-center justify-center flex-shrink-0"
                 >
-                    <img
-                        src="/assets/engranaje-sobre-mano.png"
+                    <Image
+                        src={engranajeMano}
                         alt="Enfoque personalizado"
                         class="w-full h-full object-contain"
+                        loading="lazy"
                     />
                 </div>
                 <p
@@ -35,10 +41,11 @@ import Button from "../ui/Button.astro";
                 <div
                     class="relative w-32 h-32 flex items-center justify-center flex-shrink-0"
                 >
-                    <img
-                        src="/assets/engranaje.png"
+                    <Image
+                        src={engranajeImg}
                         alt="Resiliencia operativa"
                         class="w-full h-full object-contain"
+                        loading="lazy"
                     />
                 </div>
                 <p
@@ -57,10 +64,11 @@ import Button from "../ui/Button.astro";
                 <div
                     class="relative w-32 h-32 flex items-center justify-center flex-shrink-0"
                 >
-                    <img
-                        src="/assets/pincel.png"
+                    <Image
+                        src={pincelImg}
                         alt="Metodologías ágiles"
                         class="w-full h-full object-contain"
+                        loading="lazy"
                     />
                 </div>
                 <p
@@ -75,10 +83,11 @@ import Button from "../ui/Button.astro";
         </div>
     </div>
     <div class="relative pt-8 lg:pt-12">
-        <img
-            src="/assets/escala-sin-lim.png"
+        <Image
+            src={escalaImg}
             alt="Escala sin límites"
             class="w-full h-full object-contain"
+            loading="lazy"
         />
         <div
             class="absolute inset-0 flex items-end justify-end pr-4 md:pr-8 lg:pr-16 pb-4 md:pb-6"

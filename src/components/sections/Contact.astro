@@ -1,30 +1,38 @@
 ---
 import Button from "../ui/Button.astro";
 import Card from "../ui/Card.astro";
+import { Image } from "astro:assets";
+import recurso1 from "../../assets/Recurso 1.png";
+import recurso9 from "../../assets/Recurso 9.png";
+import pcIlust from "../../assets/pc-ilust.png";
+import recurso11 from "../../assets/Recurso 11.png";
+import recurso12 from "../../assets/Recurso 12.png";
+import phoneIlust from "../../assets/phone-ilust.png";
+import personaIlust from "../../assets/persona-ilust.png";
 
 const cards = [
   {
-    image: "/assets/Recurso 9.png",
+    image: recurso9,
     text: "Desarrollamos e implementamos soluciones basadas en la nube que ofrecen flexibilidad, escalabilidad y accesibilidad, permitiendo a las organizaciones reducir costos y optimizar sus operaciones de forma segura.",
   },
   {
-    image: "/assets/pc-ilust.png",
+    image: pcIlust,
     text: "Ayudamos a las empresas a automatizar tareas repetitivas y procesos complejos, utilizando soluciones de software que mejoren la eficiencia operativa y liberen recursos para tareas de mayor valor.",
   },
   {
-    image: "/assets/Recurso 11.png",
+    image: recurso11,
     text: "Creamos soluciones de software a medida, adaptadas específicamente a las necesidades de cada cliente, optimizando sus procesos y mejorando su competitividad en el mercado.",
   },
   {
-    image: "/assets/Recurso 12.png",
+    image: recurso12,
     text: "Proporcionamos soporte técnico y mantenimiento preventivo para garantizar que las soluciones implementadas sigan funcionando de manera óptima, asegurando la continuidad y seguridad del negocio.",
   },
   {
-    image: "/assets/phone-ilust.png",
+    image: phoneIlust,
     text: "Desarrollamos aplicaciones web y móviles intuitivas, escalables y seguras, que permiten a las empresas mejorar la interacción con sus usuarios y optimizar sus operaciones diarias.",
   },
   {
-    image: "/assets/persona-ilust.png",
+    image: personaIlust,
     text: "Proporcionamos asesoramiento experto para ayudar a las empresas a identificar las mejores soluciones tecnológicas y estrategias digitales, asegurando que su infraestructura y aplicaciones estén alineados con sus objetivos a largo plazo.",
   },
 ];
@@ -35,10 +43,12 @@ const cards = [
   class="bg-gray-50 py-16 lg:py-24 font-body overflow-hidden relative"
 >
   <div class="absolute inset-0 z-0 pointer-events-none opacity-50">
-    <img
-      src="/assets/Recurso 1.png"
+    <Image
+      src={recurso1}
       alt=""
       class="w-full h-full object-cover"
+      width={1920}
+      format="webp"
     />
   </div>
 

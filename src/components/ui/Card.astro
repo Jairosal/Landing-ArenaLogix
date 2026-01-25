@@ -8,9 +8,11 @@
  * </Card>
  */
 
+import { Image } from "astro:assets";
+
 interface Props {
     /** Ruta de la imagen/icono */
-    image?: string;
+    image?: string | ImageMetadata;
     /** Texto alternativo para la imagen */
     imageAlt?: string;
     /** Título de la tarjeta (opcional) */
@@ -63,13 +65,21 @@ const allClasses = [baseClasses, variants[variant], positionClasses, className]
     {
         image && (
             <div class="flex-shrink-0 w-8 sm:w-10 md:w-12 mr-2 sm:mr-3 rounded-lg flex items-center justify-center overflow-hidden">
-                <img
-                    src={image}
-                    alt={imageAlt}
-                    class="w-full h-full object-contain p-0.5"
-                    loading="lazy"
-                    decoding="async"
-                />
+                {typeof image === "string" ? (
+                    <img
+                        src={image}
+                        alt={imageAlt}
+                        class="w-full h-full object-contain p-0.5"
+                        loading="lazy"
+                    />
+                ) : (
+                    <Image
+                        src={image}
+                        alt={imageAlt}
+                        class="w-full h-full object-contain p-0.5"
+                        loading="lazy"
+                    />
+                )}
             </div>
         )
     }
