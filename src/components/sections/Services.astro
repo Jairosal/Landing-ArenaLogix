@@ -20,13 +20,43 @@ const optimizedBackground = await getImage({
     <div
       class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center"
     >
-      <Image
-        src={desSoft}
-        alt="Desarrollo de Software Personalizado - Soluciones a medida para tu empresa"
-        class="w-full max-w-xs sm:max-w-sm"
-        loading="lazy"
-        format="webp"
-      />
+      <div
+        class="group h-full w-full max-w-xs sm:max-w-sm [perspective:1000px]"
+      >
+        <div
+          class="relative h-full w-full transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]"
+        >
+          {/* Front Face */}
+          <div class="absolute inset-0 [backface-visibility:hidden]">
+            <Image
+              src={desSoft}
+              alt="Desarrollo de Software Personalizado - Soluciones a medida para tu empresa"
+              class="w-full h-auto"
+              loading="lazy"
+              format="webp"
+            />
+          </div>
+          {/* Back Face */}
+          <div
+            class="absolute inset-0 h-full w-full text-center [transform:rotateY(180deg)] [backface-visibility:hidden]"
+          >
+            <Image
+              src={consultoriaImg}
+              alt="Consultoría Tecnológica"
+              class="w-full h-auto"
+              loading="lazy"
+              format="webp"
+            />
+          </div>
+          {/* Placeholder to keep height */}
+          <Image
+            src={desSoft}
+            alt=""
+            class="w-full h-auto opacity-0 pointer-events-none invisible"
+            aria-hidden="true"
+          />
+        </div>
+      </div>
       <Image
         src={consultoriaImg}
         alt="Consultoría Tecnológica - Asesoramiento experto para tu transformación digital"
@@ -34,13 +64,43 @@ const optimizedBackground = await getImage({
         loading="lazy"
         format="webp"
       />
-      <Image
-        src={desApp}
-        alt="Desarrollo de Aplicaciones Web y Móviles - Apps intuitivas y escalables"
-        class="w-full max-w-xs sm:max-w-sm sm:col-span-2 sm:mx-auto lg:col-span-1"
-        loading="lazy"
-        format="webp"
-      />
+      <div
+        class="group h-full w-full max-w-xs sm:max-w-sm sm:col-span-2 sm:mx-auto lg:col-span-1 [perspective:1000px]"
+      >
+        <div
+          class="relative h-full w-full transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]"
+        >
+          {/* Front Face */}
+          <div class="absolute inset-0 [backface-visibility:hidden]">
+            <Image
+              src={desApp}
+              alt="Desarrollo de Aplicaciones Web y Móviles - Apps intuitivas y escalables"
+              class="w-full h-auto"
+              loading="lazy"
+              format="webp"
+            />
+          </div>
+          {/* Back Face */}
+          <div
+            class="absolute inset-0 h-full w-full text-center [transform:rotateY(180deg)] [backface-visibility:hidden]"
+          >
+            <Image
+              src={consultoriaImg}
+              alt="Consultoría Tecnológica"
+              class="w-full h-auto"
+              loading="lazy"
+              format="webp"
+            />
+          </div>
+          {/* Placeholder to keep height */}
+          <Image
+            src={desApp}
+            alt=""
+            class="w-full h-auto opacity-0 pointer-events-none invisible"
+            aria-hidden="true"
+          />
+        </div>
+      </div>
     </div>
   </div>
 </section>

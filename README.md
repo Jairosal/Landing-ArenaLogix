@@ -18,7 +18,7 @@ ArenaLogix es una landing page profesional construida con tecnologías modernas 
 │   │   ├── layout/        # Componentes de navegación (Navbar)
 │   │   ├── sections/      # Secciones de la landing page
 │   │   └── ui/            # 🧩 Librería de componentes reutilizables (Button, Card, SectionTitle)
-│   ├── layouts/           # Layout principal con SEO integrado
+│   ├── layouts/           # MainLayout con SEO integrado
 │   ├── pages/             # Páginas del sitio
 │   └── styles/            # Estilos globales y fuentes
 ├── astro.config.mjs       # Configuración optimizada (Compresión, Tailwind)
@@ -45,7 +45,8 @@ ArenaLogix es una landing page profesional construida con tecnologías modernas 
 | Sección | Descripción |
 | :------ | :---------- |
 | **Hero** | Carga prioritaria (`fetchpriority="high"`) para LCP instantáneo |
-| **Services** | Grid responsivo con lazy loading |
+| **Services** | Grid responsivo con efectos Flip 3D (Tarjetas interactivas) e imágenes optimizadas |
+| **Our Clients** | Scroll horizontal infinito (Marquee) en móvil/tablet y Grid en escritorio |
 | **Contact** | Formulario preparado para integración |
 | **Footer** | Optimización de assets y enlaces de navegación |
 | **UI Components** | Botones, Tarjetas y Títulos estandarizados |

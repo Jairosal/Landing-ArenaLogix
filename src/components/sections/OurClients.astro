@@ -136,16 +136,12 @@ const testimonials = [
                 </div>
             </div>
 
-            <!-- Spacer (matches right arrow) -->
              <div class="w-12 h-12 flex-shrink-0 invisible"></div>
         </div>
-
-        <!-- Bottom Row: Testimonials Carousel -->
         <div class="flex items-center gap-2 md:gap-4">
-            <!-- Left Arrow -->
             <button
                 id="prev-testimonial"
-                class="p-2 rounded-full hover:bg-gray-100 transition-colors flex-shrink-0"
+                class="p-2 rounded-ful transition-colors flex-shrink-0"
                 aria-label="Previous testimonial"
             >
                 <Image src={arrowBlack} 
@@ -179,18 +175,13 @@ const testimonials = [
                                     </div>
                                     <span class="text-[9px] md:text-[11px] text-gray-500 font-medium">{testimonial.rating} / {testimonial.maxRating}</span>
                                 </div>
-                                
-                                <!-- Quote Box -->
                                 <div class="flex-1 bg-sky-50 border border-blue-700 rounded-2xl p-1 md:p-2">
-                                    <!-- Author with quote icon -->
                                     <div class="flex items-start gap-2  mb-1">
                                         <span class="text-4xl sm:text-6xl md:text-9xl text-brand-purple font-heading leading-none rotate-180 flex-shrink-0 -mt-6 md:-mt-24">''</span>
                                         <span class="font-body font-extrabold text-gray-900 text-[7px] md:text-[8px] tracking-tighter overflow-hidden text-ellipsis pt-4">
                                             {testimonial.author} - {testimonial.role}
                                         </span>
                                     </div>
-                                    
-                                    <!-- Review text -->
                                     <p class="text-[6px] md:text-[8px] font-body text-gray-900 leading-base text-justify pt-4">
                                         {testimonial.review}
                                     </p>
@@ -201,10 +192,9 @@ const testimonials = [
                 </div>
             </div>
 
-            <!-- Right Arrow -->
             <button
                 id="next-testimonial"
-                class="p-2 rounded-full hover:bg-gray-100 transition-colors flex-shrink-0"
+                class="p-2 rounded-full transition-colors flex-shrink-0"
                 aria-label="Next testimonial"
             >
                 <Image src={arrowBlue} 
