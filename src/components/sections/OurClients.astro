@@ -1,6 +1,10 @@
 ---
 import { Image } from "astro:assets";
-import logoCatBlue from "../../assets/logo-cat-blue.png";
+import autoLamh from "../../assets/auto-lamh.png";
+import granAuto from "../../assets/gran-auto.png";
+import srb from "../../assets/srb.png";
+import invercampuzano from "../../assets/invercampuzano.png";
+import transBedoya from "../../assets/trans-bedoya.png";
 import desSoft from "../../assets/des-soft-personalizado.png";
 import fondoAzul from "../../assets/fondo-azul.png";
 import porqueElegirnos from "../../assets/porque-elegirnos.png";
@@ -8,10 +12,13 @@ import calificacion from "../../assets/calificacion.png";
 import arrowBlack from "../../assets/arrow-black.png";
 import arrowBlue from "../../assets/arrow-blue.png";
 
-const clients = Array(6).fill({
-    name: "Cliente",
-    logo: logoCatBlue,
-});
+const clients = [
+    { name: "Auto Lamh", logo: autoLamh },
+    { name: "Gran Auto", logo: granAuto },
+    { name: "SRB", logo: srb },
+    { name: "Invercampuzano", logo: invercampuzano },
+    { name: "Trans Bedoya", logo: transBedoya },
+];
 
 const testimonials = [
     {
@@ -63,7 +70,9 @@ const testimonials = [
                     <div class="flex-shrink-0 w-32 h-32 flex items-center justify-center p-4">
                         <Image
                             src={client.logo}
-                            alt={`Logo de ${client.name} ${index + 1}`}
+                            alt={`Logo de ${client.name}`}
+                            width={120}
+                            height={120}
                             class="w-full h-full object-contain opacity-80"
                             loading="lazy"
                         />
@@ -74,14 +83,16 @@ const testimonials = [
 
         {/* Desktop Grid (Visible >= lg) */}
         <div
-            class="hidden lg:grid lg:grid-cols-6 gap-8 items-center justify-items-center"
+            class="hidden lg:grid lg:grid-cols-5 gap-8 items-center justify-items-center"
         >
             {
                 clients.map((client, index) => (
                     <div class="w-32 h-32 flex items-center justify-center p-4 transition-transform hover:scale-105">
                         <Image
                             src={client.logo}
-                            alt={`Logo de ${client.name} ${index + 1}`}
+                            alt={`Logo de ${client.name}`}
+                            width={120}
+                            height={120}
                             class="w-full h-full object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
                             loading="lazy"
                         />

@@ -1,14 +1,59 @@
 ---
 import { Image, getImage } from "astro:assets";
 import desSoft from "../../assets/des-soft-personalizado.png";
-import consultoriaImg from "../../assets/consultoria-tecno.png";
-import desApp from "../../assets/des-apli-web-mov.png";
 import fondoBlanco from "../../assets/fondo-blanco.png";
 
 const optimizedBackground = await getImage({
   src: fondoBlanco,
   format: "webp",
 });
+
+const services = [
+  {
+    title: "Desarrollo de Software Personalizado",
+    description:
+      "Creamos soluciones a medida, adaptadas a las necesidades específicas de cada cliente, optimizando sus procesos y mejorando su competitividad en el mercado.",
+    image: desSoft,
+  },
+  {
+    title: "Consultoría Tecnológica",
+    description:
+      "Ofrecemos asesoramiento experto para identificar las mejores soluciones tecnológicas y estrategias digitales, alineando la infraestructura y aplicaciones con los objetivos a largo plazo de nuestros clientes.",
+    image: desSoft,
+  },
+  {
+    title: "Desarrollo de Aplicaciones Web y Móviles",
+    description:
+      "Desarrollamos aplicaciones intuitivas, escalables y seguras que mejoran la interacción con los usuarios y optimizan las operaciones diarias.",
+    image: desSoft,
+  },
+  {
+    title: "Automatización de Procesos",
+    description:
+      "Automatizamos tareas repetitivas y procesos complejos, mejorando la eficiencia operativa y liberando recursos para tareas de mayor valor.",
+    image: desSoft,
+  },
+  {
+    title: "Soluciones en la Nube",
+    description:
+      "Desarrollamos e implementamos soluciones basadas en la nube que ofrecen flexibilidad, escalabilidad y accesibilidad, permitiendo a las organizaciones reducir costos y optimizar sus operaciones de forma segura.",
+    image: desSoft,
+  },
+  {
+    title: "Mantenimiento y Soporte Continuo",
+    description:
+      "Proporcionamos soporte técnico y mantenimiento preventivo para garantizar que las soluciones implementadas sigan funcionando de manera óptima, asegurando la continuidad y seguridad del negocio.",
+    image: desSoft,
+  },
+  {
+    title: "Transformación Digital y Gestión del Cambio",
+    description:
+      "Ayudamos a las empresas a embarcarse en su proceso de transformación digital, gestionando el cambio cultural y tecnológico necesario para una transición exitosa hacia nuevos modelos de negocio más ágiles y eficientes.",
+    image: desSoft,
+  },
+];
+
+const allCards = [...services, ...services];
 ---
 
 <section
@@ -16,91 +61,120 @@ const optimizedBackground = await getImage({
   class="relative bg-cover bg-top"
   style={`background-image: url('${optimizedBackground.src}');`}
 >
-  <div class="relative z-10 max-w-7xl mx-auto px-6 pt-24 md:pt-64 pb-32">
-    <div
-      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center"
-    >
-      <div
-        class="group h-full w-full max-w-xs sm:max-w-sm [perspective:1000px]"
-      >
-        <div
-          class="relative h-full w-full transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]"
-        >
-          {/* Front Face */}
-          <div class="absolute inset-0 [backface-visibility:hidden]">
-            <Image
-              src={desSoft}
-              alt="Desarrollo de Software Personalizado - Soluciones a medida para tu empresa"
-              class="w-full h-auto"
-              loading="lazy"
-              format="webp"
-            />
-          </div>
-          {/* Back Face */}
-          <div
-            class="absolute inset-0 h-full w-full text-center [transform:rotateY(180deg)] [backface-visibility:hidden]"
-          >
-            <Image
-              src={consultoriaImg}
-              alt="Consultoría Tecnológica"
-              class="w-full h-auto"
-              loading="lazy"
-              format="webp"
-            />
-          </div>
-          {/* Placeholder to keep height */}
-          <Image
-            src={desSoft}
-            alt=""
-            class="w-full h-auto opacity-0 pointer-events-none invisible"
-            aria-hidden="true"
-          />
-        </div>
-      </div>
-      <Image
-        src={consultoriaImg}
-        alt="Consultoría Tecnológica - Asesoramiento experto para tu transformación digital"
-        class="w-full max-w-xs sm:max-w-sm"
-        loading="lazy"
-        format="webp"
-      />
-      <div
-        class="group h-full w-full max-w-xs sm:max-w-sm sm:col-span-2 sm:mx-auto lg:col-span-1 [perspective:1000px]"
-      >
-        <div
-          class="relative h-full w-full transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]"
-        >
-          {/* Front Face */}
-          <div class="absolute inset-0 [backface-visibility:hidden]">
-            <Image
-              src={desApp}
-              alt="Desarrollo de Aplicaciones Web y Móviles - Apps intuitivas y escalables"
-              class="w-full h-auto"
-              loading="lazy"
-              format="webp"
-            />
-          </div>
-          {/* Back Face */}
-          <div
-            class="absolute inset-0 h-full w-full text-center [transform:rotateY(180deg)] [backface-visibility:hidden]"
-          >
-            <Image
-              src={consultoriaImg}
-              alt="Consultoría Tecnológica"
-              class="w-full h-auto"
-              loading="lazy"
-              format="webp"
-            />
-          </div>
-          {/* Placeholder to keep height */}
-          <Image
-            src={desApp}
-            alt=""
-            class="w-full h-auto opacity-0 pointer-events-none invisible"
-            aria-hidden="true"
-          />
-        </div>
+  <div
+    class="relative z-10 max-w-full mx-auto pt-24 md:pt-64 pb-32 overflow-hidden"
+  >
+    {/* Marquee container */}
+    <div class="services-marquee group" id="services-marquee">
+      <div class="services-track">
+        {
+          allCards.map((service, index) => (
+            <div class="service-card" data-index={index}>
+              <div class="card-inner">
+                {/* Front Face — Image */}
+                <div class="card-front">
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    class="w-full h-full object-cover rounded-2xl"
+                    loading="lazy"
+                    format="webp"
+                  />
+                </div>
+                {/* Back Face — Description */}
+                <div class="card-back">
+                  <div class="p-5 flex flex-col justify-center h-full">
+                    <h3 class="text-base sm:text-lg font-bold text-white mb-3 font-heading leading-tight">
+                      {service.title}
+                    </h3>
+                    <p class="text-xs sm:text-sm text-white/90 leading-relaxed font-body text-justify">
+                      {service.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))
+        }
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  .services-marquee {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .services-track {
+    display: flex;
+    gap: 1.5rem;
+    width: max-content;
+    animation: services-scroll 35s linear infinite;
+  }
+
+  /* Pause animation when hovering over the marquee */
+  .services-marquee:hover .services-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes services-scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .service-card {
+    flex-shrink: 0;
+    width: 260px;
+    height: 340px;
+    perspective: 1000px;
+    cursor: pointer;
+  }
+
+  @media (min-width: 640px) {
+    .service-card {
+      width: 300px;
+      height: 380px;
+    }
+  }
+
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+  }
+
+  .service-card:hover .card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .card-front,
+  .card-back {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+
+  .card-front {
+    z-index: 2;
+  }
+
+  .card-back {
+    transform: rotateY(180deg);
+    background: #2C63A7;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 0 30px rgba(0, 100, 200, 0.1);
+  }
+</style>
