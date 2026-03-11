@@ -1,6 +1,12 @@
 ---
 import { Image, getImage } from "astro:assets";
 import desSoft from "../../assets/des-soft-personalizado.png";
+import consultoriaTecno from "../../assets/consultoria-tecno.png";
+import desApliWebMov from "../../assets/des-apli-web-mov.png";
+import automatizacionProcesos from "../../assets/Automatizacion-procesos.png";
+import solucionesNube from "../../assets/soluciones-nube.png";
+import manteSoporteConti from "../../assets/mante-soporte-conti.png";
+import transforDigital from "../../assets/transfor-digital.png";
 import fondoBlanco from "../../assets/fondo-blanco.png";
 
 const optimizedBackground = await getImage({
@@ -19,37 +25,37 @@ const services = [
     title: "Consultoría Tecnológica",
     description:
       "Ofrecemos asesoramiento experto para identificar las mejores soluciones tecnológicas y estrategias digitales, alineando la infraestructura y aplicaciones con los objetivos a largo plazo de nuestros clientes.",
-    image: desSoft,
+    image: consultoriaTecno,
   },
   {
     title: "Desarrollo de Aplicaciones Web y Móviles",
     description:
       "Desarrollamos aplicaciones intuitivas, escalables y seguras que mejoran la interacción con los usuarios y optimizan las operaciones diarias.",
-    image: desSoft,
+    image: desApliWebMov,
   },
   {
     title: "Automatización de Procesos",
     description:
       "Automatizamos tareas repetitivas y procesos complejos, mejorando la eficiencia operativa y liberando recursos para tareas de mayor valor.",
-    image: desSoft,
+    image: automatizacionProcesos,
   },
   {
     title: "Soluciones en la Nube",
     description:
       "Desarrollamos e implementamos soluciones basadas en la nube que ofrecen flexibilidad, escalabilidad y accesibilidad, permitiendo a las organizaciones reducir costos y optimizar sus operaciones de forma segura.",
-    image: desSoft,
+    image: solucionesNube,
   },
   {
     title: "Mantenimiento y Soporte Continuo",
     description:
       "Proporcionamos soporte técnico y mantenimiento preventivo para garantizar que las soluciones implementadas sigan funcionando de manera óptima, asegurando la continuidad y seguridad del negocio.",
-    image: desSoft,
+    image: manteSoporteConti,
   },
   {
     title: "Transformación Digital y Gestión del Cambio",
     description:
       "Ayudamos a las empresas a embarcarse en su proceso de transformación digital, gestionando el cambio cultural y tecnológico necesario para una transición exitosa hacia nuevos modelos de negocio más ágiles y eficientes.",
-    image: desSoft,
+    image: transforDigital,
   },
 ];
 
@@ -173,7 +179,7 @@ const allCards = [...services, ...services];
 
   .card-back {
     transform: rotateY(180deg);
-    background: #2C63A7;
+    background: #2c63a7;
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: inset 0 0 30px rgba(0, 100, 200, 0.1);
   }
